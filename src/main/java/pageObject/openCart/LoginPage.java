@@ -43,6 +43,7 @@ public class LoginPage {
 	    WebElement forgottenPasswordLink = driver.findElement(forgottenPasswordLinkLocator);
 	    forgottenPasswordLink.click();
 	}
+	
 
 	public boolean checkForgotPwdLink() {
 	    return driver.findElement(forgottenPasswordLinkLocator).isDisplayed();
