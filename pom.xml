@@ -37,6 +37,11 @@
 		    <version>7.10.2</version>
 		    <scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>CucumberPOMSeries</groupId>
+			<artifactId>CucumberPOMSeries</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>		

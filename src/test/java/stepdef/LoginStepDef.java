@@ -1,6 +1,12 @@
 package stepdef;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -16,6 +22,7 @@ public class LoginStepDef {
 	
 	private WebDriver driver;
 	private LoginPage loginPage;
+	String fileName = "ScreenShot";
 
 	@Before
 	public void setup(){
@@ -24,6 +31,18 @@ public class LoginStepDef {
 
 	@After
 	public void tearDown(){
+		File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+        // 2. Specify where you want to save it (e.g., a folder named 'screenshots')
+        File destFile = new File("screenshots/" + fileName + ".png");
+
+        try {
+            // 3. Copy the screenshot file to the destination path
+            FileUtils.copyFile(srcFile, destFile);
+            System.out.println("Screenshot saved: " + destFile.getAbsolutePath());
+        } catch (IOException e) {
+            System.out.println("Failed to save screenshot: " + e.getMessage());
+        }
 	    if(driver!=null){
 	        driver.quit();
 	    }
